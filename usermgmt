@@ -1,0 +1,52 @@
+#!/bin/bash
+printf "hello  \n"
+printf "for management user plese enter command and user name \n"
+printf "for example : find moshe \n"
+printf "can use command below : \n"
+printf "new - creates a user \n"
+printf "del - delete  a user \n"
+printf "find- finds a user \n"
+printf "list - list all users \n"
+printf "exit - leave the script \n" 
+read -p " users> " -a usrmgmt
+
+
+while [[ ${usrmgmt[0]} != exit ]]
+   do
+          if [ ${usrmgmt[0]} == new ]
+    		then
+			touch ${usrmgmt[1]}.user
+			printf "name:  ${usrmgmt[1]} \n" >  ${usrmgmt[1]}.user
+			printf "password:  $RANDOM  \n" >> ${usrmgmt[1]}.user
+			printf " Created user ${usrmgmt[1]} \n"
+
+
+ 	    elif [[ ${usrmgmt[0]} == del ]]
+     		then
+			rm ${usrmgmt[1]}.user
+			printf " ${usrmgmt[1]}  deleted \n"
+
+
+  	    elif [[ ${usrmgmt[0]} == find ]]
+     		then
+			if [  -f ${usrmgmt[1]}.user ]
+			   then
+	       			ls |grep ${usrmgmt[1]}.user
+	       			cat ${usrmgmt[1]}.user
+			else
+	        		 printf " No user ${usrmgmt[1]} \n"
+			fi
+
+
+	    elif [[ ${usrmgmt[0]} == list ]]
+			then
+				ls |grep .user|cut -f1 -d '.'
+
+        		else
+				printf " No user ${usrmgmt[1]} \n"
+
+	fi
+
+	read -p " users> " -a usrmgmt
+
+done
