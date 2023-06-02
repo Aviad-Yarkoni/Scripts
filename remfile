@@ -1,0 +1,21 @@
+#!/bin/bash
+#
+filename=$(ls  "..")
+for i in ${filename}
+  do 
+	count=$(echo -n "$i"|wc -c)
+	if [[ ${count} -lt 5 ]]
+  then
+ 	printf  "$i <5 \n"
+	 read -p "are you want to delete $i  y/n : " delete
+		if [[ $delete = y ]]
+		then
+			rm ../$i	
+			printf "$i deleted \n"
+		else
+			printf "$i not deleted \n"
+		fi	
+		
+ fi
+done
+

@@ -1,0 +1,20 @@
+#!/bin/bash
+#
+filename=$(ls  "..")
+for i in ${filename}
+  do 
+	if  grep -q "PASSWORD" ../$i
+  then
+ 	printf  "$i  PASSWORD  exists \n"
+	 read -p "Do delete y/n" delete
+		if [[ $delete = y ]]
+		then
+			rm ../$i	
+			printf "$i deleted \n"
+		else
+			printf "$i not deleted \n"
+		fi	
+		
+ fi
+done
+
