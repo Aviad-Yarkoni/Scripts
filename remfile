@@ -1,5 +1,11 @@
 #!/bin/bash
 #
+#write a script that:
+
+#Go over all files in a directory and delete all files that has names shorter than first parameter.
+
+
+remfiles 5
 filename=$(ls  "$1")
 for i in ${filename}
   do 
