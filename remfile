@@ -10,14 +10,19 @@ filename=$(ls  "$1")
 for i in ${filename}
   do 
 	count=$(echo -n "$i"|wc -c)
-	if [[ ${count} -lt 5 ]]
+	if [[ ${count} -lt 5 ]] && [[ -f $i ]] 
   then
  	printf  "$i <5 \n"
 	 read -p "are you want to delete $i  y/n : " delete
 		if [[ $delete = y ]]
 		then
-			rm ../$i	
-			printf "$i deleted \n"
+			rm  -f $i 
+			  if [[-f "i"]]
+				printf "$i not deleted"
+				printf "To delete a file run manually: rm $i"
+			  else
+				printf "$i deleted \n"
+			fi
 		else
 			printf "$i not deleted \n"
 		fi	
