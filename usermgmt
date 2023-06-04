@@ -21,7 +21,6 @@
 
 
 
-
 printf "hello  \n"
 printf "for management user plese enter command and user name \n"
 printf "for example : find moshe \n"
