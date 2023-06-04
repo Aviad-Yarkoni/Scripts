@@ -1,5 +1,11 @@
 #!/bin/bash
 #
+#
+#Write a script that goes over all files in a directory, and finds all files that have the word PASSWORD in them.
+#The script deletes those files, and create a report file that says what files were removed.
+
+
+
 echo " I can search if password exist in  file in directory"
 read -p "what to searche : " password
 filename=$(ls "$1")
