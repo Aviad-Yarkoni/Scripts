@@ -5,7 +5,6 @@
 #Go over all files in a directory and delete all files that has names shorter than first parameter.
 
 
-remfiles 5
 filename=$(ls  "$1")
 for i in ${filename}
   do 
@@ -17,16 +16,15 @@ for i in ${filename}
 		if [[ $delete = y ]]
 		then
 			rm  -f $i 
-			  if [[-f "i"]]
+			  if [[ -f "i" ]]
+			     then
 				printf "$i not deleted"
-				printf "To delete a file run manually: rm $i"
+				echo "delete a file run manually: rm $i"
 			  else
 				printf "$i deleted \n"
 			fi
 		else
 			printf "$i not deleted \n"
-		fi	
-		
+	fi	
  fi
 done
-
