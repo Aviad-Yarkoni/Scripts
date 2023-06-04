@@ -1,20 +1,27 @@
 #!/bin/bash
 #
-filename=$(ls  "..")
-for i in ${filename}
+echo " I can search if password exist in  file in directory"
+read -p "what to searche : " password
+filename=$(ls "$1")
+for i in ${filename} 
   do 
-	if  grep -q "PASSWORD" ../$i
+	if [ -f $1/$i ] &&  grep -q "${password}" $1/$i   
   then
- 	printf  "$i  PASSWORD  exists \n"
-	 read -p "Do delete y/n" delete
+ 	printf  "$i  ${password}  exists \n"
+	 read -p "Do delete y/n : " delete
 		if [[ $delete = y ]]
 		then
-			rm ../$i	
-			printf "$i deleted \n"
-		else
+			rm $1/$i -f
+			if [[ -f "$1/$i" ]]
+			     then
+				printf "$i not deleted \n"
+			else
+				printf "$i deleted \n"
+			fi
+		   else
 			printf "$i not deleted \n"
 		fi	
 		
- fi
+fi
 done
 
