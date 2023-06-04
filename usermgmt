@@ -1,4 +1,27 @@
 #!/bin/bash
+
+#Final bash project:
+
+#Write a "user management" script (file called userman that implements a command line interface, with the following commands:
+#new - creates a new user
+#del - deletes a user
+#find - finds a user
+#list - list all users
+#exit - leaves the script.
+
+#When a new user is created, the script creates a file like the following:
+
+#adam.user
+#with the content:
+#name: adam
+#password:  54276 
+
+#(this is a random number you create automatically)
+
+
+
+
+
 printf "hello  \n"
 printf "for management user plese enter command and user name \n"
 printf "for example : find moshe \n"
