@@ -40,11 +40,13 @@ while [[ ${usrmgmt[0]} != exit ]]
 
 	    elif [[ ${usrmgmt[0]} == list ]]
 			then
-				ls |grep .user|cut -f1 -d '.'
-
-        		else
-				printf " No user ${usrmgmt[1]} \n"
-
+			usr=$(ls *.user 2> /dev/null)
+				if [[ $? -gt 0 ]]
+				  then
+					printf "No Users  \n"	
+        			  else
+					ls |grep .user|cut -f1 -d '.'
+				fi
 	fi
 
 	read -p " users> " -a usrmgmt
