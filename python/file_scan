@@ -1,0 +1,24 @@
+import file_handle
+import data_handle
+
+
+
+
+def collect_files_parameters(dirpath):
+    for item in  file_handle.get_dir_content (dirpath):
+        if file_handle.is_directory (dirpath +'/'+item):
+            data_handle.file_data_parametrs(collect_files_parameters (dirpath +'/'+ item)) 
+        else:
+            data_handle.file_data_parametrs(file_handle.file_details(dirpath +'/'+ item,item))
+    return (data_handle.file_data_parametrs)
+
+def top_biggest_file (sile_list,number_of_biggest_files=10):
+    pass
+
+
+a =collect_files_parameters('/home/osboxes/devsecops/users')
+print(a)
+
+
+
+
