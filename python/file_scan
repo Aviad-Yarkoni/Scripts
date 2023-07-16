@@ -16,8 +16,8 @@ def top_biggest_file (sile_list,number_of_biggest_files=10):
     pass
 
 
-a =collect_files_parameters('/home/osboxes/devsecops/users')
-print(a)
+# a =collect_files_parameters('/home/osboxes/devsecops/users')
+# print(a)
 
 
 
