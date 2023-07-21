@@ -1,23 +1,54 @@
 import file_handle
 import data_handle
+import datetime
 
 
 
+def find_outlier_files (directory_path,):
+    data_storage = data_handle.storage_type
+    data_storage = collect_files_parameters (directory_path)
+    get_biggest_files (data_storage)
+
+
+    
 
 def collect_files_parameters(dirpath):
     for item in  file_handle.get_dir_content (dirpath):
-        if file_handle.is_directory (dirpath +'/'+item):
-            data_handle.file_data_parametrs(collect_files_parameters (dirpath +'/'+ item)) 
+        item_path = (dirpath +'/'+item)
+        if file_handle.is_directory (item_path):
+           collect_files_parameters (item_path) 
         else:
-            data_handle.file_data_parametrs(file_handle.file_details(dirpath +'/'+ item,item))
-    return (data_handle.file_data_parametrs)
-
-def top_biggest_file (sile_list,number_of_biggest_files=10):
-    pass
+            data_handle.append_file_to_list(file_handle.file_details(item_path,item,a))
+    return a
 
 
-# a =collect_files_parameters('/home/osboxes/devsecops/users')
-# print(a)
+def get_biggest_files (list_file,number_of_biggest_files=10):
+    biggest_file = data_handle.get_highest_files(list_file,'size',number_of_biggest_files)
+    return biggest_file
+
+
+
+def create_empty_file ():
+    on_time = datetime.datetime.now()
+    path = f"/home/osboxes/devsecops/result_{on_time}.txt"
+    open (path , "x")
+    return path
+
+
+def write_to_file (list_of_dict,file_result,atribute):
+    file_object = open (file_result, 'a')
+    for item_dict in list_of_dict:
+        file_object.write('\n'+item_dict['path'] +'  '+atribute +' '+ item_dict[atribute])
+
+
+
+
+
+# a=[]
+# a =collect_files_parameters('/home/osboxes/devsecops')
+# for i in get_biggest_files(a):
+#     print (i)
+# print (len(get_biggest_files(a)))
 
 
 

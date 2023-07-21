@@ -1,5 +1,8 @@
 import os
 import datetime
+import hashlib
+
+
 
 def file_details (file_path,file_name):
    return {'name':file_name,
@@ -13,7 +16,6 @@ def file_details (file_path,file_name):
 def get_dir_content (directory):
    return os.listdir(directory) 
    
-
 def file_size (files_path):
     return os.path.getsize(files_path)
 
@@ -31,9 +33,21 @@ def file_create_time(files_path):
 
 def change_unix_time (unix_time):
    return datetime.datetime.fromtimestamp (unix_time)
+ 
+
+def do_file_hash(file_path):
+    hash_file = hashlib.sha256()
+    read_file = open(file_path, 'rb')
+    while(True):
+        sometext = read_file.read(20000)
+        readlen = len(sometext)
+        if readlen == 0:
+            return hash_file.hexdigest()
+        hash_file.update(sometext)
 
 
 
-# a=file_details('/home/osboxes/devsecops/alice','alice')
+# a=do_file_hash('/home/osboxes/devsecops/alice')
 # print (a)
-# # print (change_unix_time(a))
+# print (change_unix_time(a))
+# print (type (a))
