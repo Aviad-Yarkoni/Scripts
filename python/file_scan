@@ -7,6 +7,7 @@ import datetime
 def find_outlier_files (directory_path):
     export_data_file = create_empty_file()
     data_storage = collect_files_parameters (directory_path)
+
     title = '10 Big Files'
     Write_title (title,export_data_file)
     biggest_file= get_biggest_files(data_storage)
@@ -23,7 +24,7 @@ def collect_files_parameters(dirpath):
     for item in  file_handler.get_dir_content (dirpath):
         item_path = (dirpath +'/'+item)
         if file_handler.is_directory (item_path):
-           collect_files_parameters (item_path) 
+           data_handler.append_file_to_list (collect_files_parameters (item_path),data_storage)
         else:
             call_file_details = file_handler.file_details(item_path,item)
             data_handler.append_file_to_list(call_file_details,data_storage)
@@ -46,7 +47,8 @@ def create_empty_file ():
 def write_to_file (list_of_dict,file_result):
     file_object = open (file_result, 'a')
     for item_dict in list_of_dict:
-        file_object.write ('\n'+str(item_dict))
+        file_object.write (str(item_dict)+'\n')
+
 
 def Write_title (title,file_result):
     file_object = open (file_result, 'a') 
@@ -61,7 +63,7 @@ def Write_title (title,file_result):
 
 
 
-find_outlier_files ('/home/osboxes/devsecops/david/')
+print (find_outlier_files ('/home/osboxes/devsecops/david'))
 
 # a=[]
 # a=[{'/home/osboxes/devsecops/david/'},{'result_2023-07-22 17:12:22.887507.txt'}]

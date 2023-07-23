@@ -12,8 +12,9 @@ def get_storage_type ():
 
 
 def append_to_list_file(list_file,item,atribute):
-    list_file.append({'path':item['path'],atribute:item[atribute]})
-    return sorted(list_file,key=lambda x:x[atribute])
+    list_file.append ({'path':item['path'],atribute:item[atribute]})
+    sorted(list_file,key=lambda x:x[atribute])
+    return list_file
 
 
 
@@ -73,4 +74,4 @@ def is_duplicate (file_list):
 
 
 # a=[{'size':1,'path':'/home/osboxes/devsecops/alice'},{'size':2,'path':'/home/osboxes/devsecops/alice'},{'size':98,'path':'blabla'},{'size':1,'path':'blabla'},{'size':4,'path':'blabla'},{'size':4,'path':'blabla'}]
-# print (is_duplicate(a))
+# print (get_highest_files (a,'size'))
