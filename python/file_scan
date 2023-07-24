@@ -5,16 +5,35 @@ import datetime
 
 
 def find_outlier_files (directory_path):
-    export_data_file = create_empty_file()
+    export_data_files = create_empty_file()
     data_storage = collect_files_parameters (directory_path)
 
     title = '10 Big Files'
-    Write_title (title,export_data_file)
-    biggest_file= get_biggest_files(data_storage)
-    write_to_file (biggest_file,export_data_file)
+    Write_title (title,export_data_files)
+    biggest_files= get_biggest_files(data_storage)
+    write_list_to_file (biggest_files,export_data_files)
+
+    title = '10 Last Modify Time'
+    Write_title (title,export_data_files)
+    last_modify_files = get_last_modify(data_storage)
+    write_list_to_file (last_modify_files,export_data_files)
+    
+    title = '10 old Modify Time'
+    Write_title (title,export_data_files)
+    old_modify_files = get_oldest_modify(data_storage)
+    write_list_to_file (old_modify_files,export_data_files)
     
     
-    pass
+    title = 'duplicat Files'
+    Write_title (title,export_data_files)
+    duplicate_files = data_handler.is_duplicate(data_storage)
+    write_dict_to_file (duplicate_files,export_data_files)
+
+
+    title = 'Directories Size'
+    Write_title (title,export_data_files)
+    dir_sizes = data_handler.get_dirs_size(data_storage)
+    write_dict_to_file (dir_sizes,export_data_files)
 
 
     
@@ -24,7 +43,7 @@ def collect_files_parameters(dirpath):
     for item in  file_handler.get_dir_content (dirpath):
         item_path = (dirpath +'/'+item)
         if file_handler.is_directory (item_path):
-           data_handler.append_file_to_list (collect_files_parameters (item_path),data_storage)
+           data_storage=data_storage+collect_files_parameters (item_path)
         else:
             call_file_details = file_handler.file_details(item_path,item)
             data_handler.append_file_to_list(call_file_details,data_storage)
@@ -35,7 +54,13 @@ def get_biggest_files (list_file,number_of_biggest_files=10):
     biggest_file = data_handler.get_highest_files(list_file,'size',number_of_biggest_files)
     return biggest_file
 
+def get_last_modify (list_file,number_of_biggest_files=10):
+    biggest_file = data_handler.get_highest_files(list_file,'modify time',number_of_biggest_files)
+    return biggest_file
 
+def get_oldest_modify (list_file,number_of_biggest_files=10):
+    biggest_file = data_handler.get_lowest_files(list_file,'modify time',number_of_biggest_files)
+    return biggest_file
 
 def create_empty_file ():
     on_time = datetime.datetime.now()
@@ -44,7 +69,7 @@ def create_empty_file ():
     return path
 
 
-def write_to_file (list_of_dict,file_result):
+def write_list_to_file (list_of_dict,file_result):
     file_object = open (file_result, 'a')
     for item_dict in list_of_dict:
         file_object.write (str(item_dict)+'\n')
@@ -54,16 +79,20 @@ def Write_title (title,file_result):
     file_object = open (file_result, 'a') 
     file_object.write ('\n'* 3)
     file_object.write ('\n'+ title+'\n' )
+    file_object.write ('\n')
 
 
-                       
+def write_dict_to_file (list_of_dict,file_result):
+    file_object = open (file_result, 'a')
+    for item_dict in list_of_dict.items():
+        file_object.write (str(item_dict)+'\n')                       
 
 
 
 
 
 
-print (find_outlier_files ('/home/osboxes/devsecops/david'))
+find_outlier_files ('/home/osboxes/devsecops')
 
 # a=[]
 # a=[{'/home/osboxes/devsecops/david/'},{'result_2023-07-22 17:12:22.887507.txt'}]

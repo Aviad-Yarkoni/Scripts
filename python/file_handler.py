@@ -9,7 +9,7 @@ def file_details (file_path,file_name):
            'path':file_path,
            'size':file_size(file_path),
            'access time':file_access_time(file_path),
-           'modify time':file_modify_time(file_path),
+           'modify time':change_unix_time( file_modify_time(file_path)),
            'create time':file_create_time(file_path),
            }
 
