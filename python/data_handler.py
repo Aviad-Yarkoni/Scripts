@@ -75,15 +75,3 @@ def get_dirs_size (files_list):
     return dirs_size
 
 
-
-        
-# a=[{'size':1,'path':'/home/osboxes/devsecops/alice'},
-#    {'size':2,'path':'/home/osboxes/devsecops/alice'},
-#    {'name': 'b', 'path': '/home/osboxes/devsecops/david/b' },
-#     {'name': 'a', 'path': '/home/osboxes/devsecops/david/a'},
-#     {'size':176,'path':'/home/osboxes/devsecops/david/alice'},
-#     {'name': 'b', 'path': '/home/osboxes/devsecops/david/forscript/asd/b', 'size': 0, 'access time': 1690060192.7957535, 'modify time':795753, 'create time': 1690060192.7957535}, 
-#     {'name': 'a', 'path': '/home/osboxes/devsecops/david/forscript/a', 'size': 0, 'access time': 1690060162.7723832, 'modify time':2023, 'create time': 1690060162.7723832}]
-# #print (get_highest_files (a,'size'))
-# for item in is_duplicate(a).items():
-#     print (item)

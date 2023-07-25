@@ -94,15 +94,5 @@ def write_dict_to_file (list_of_dict,file_result):
 
 find_outlier_files ('/home/osboxes/devsecops')
 
-# a=[]
-# a=[{'/home/osboxes/devsecops/david/'},{'result_2023-07-22 17:12:22.887507.txt'}]
-# file = '/home/osboxes/devsecops/result/result_2023-07-22 17:12:22.887507.txt'
-# write_to_file(a,file)
-# print (file)
-# for i in get_biggest_files(a):
-#     print (i)
-# print (len(get_biggest_files(a)))
-
-
 
 

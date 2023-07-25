@@ -46,8 +46,3 @@ def do_file_hash(file_path):
         hash_file.update(sometext)
 
 
-
-# a=do_file_hash('/home/osboxes/devsecops/alice')
-# print (a)
-# print (change_unix_time(a))
-# print (type (a))
