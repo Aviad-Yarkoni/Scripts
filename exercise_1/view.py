@@ -1,27 +1,30 @@
-from Flask import Flask, request
-import socket  
+from flask import Flask
+import socket
+import os
 
-def get_app ():
-    app=Flask(__name__)
-    
-    @app.router('/')
+def get_app():
+    app = Flask(__name__)
+
+    @app.route('/')
     def home():
-        host_name = get_host_name
-        host_ip =  get_host_ip
-        content = f"Greetings !!!\n ""This is your server answering from pod:\n""Host Name: {host_name}\nIP Address: {host_ip}"
+        host_name = socket.gethostname()
+        host_ip = socket.gethostbyname(host_name)
+        massage = f"Greetings !!!\nThis is your server answering from pod:\n"
+        host_name_massage = "Host Name:" + host_name
+        host_ip_massage = "IP Address:" + host_ip
+        content = massage+ host_name_massage + host_ip_massage
         return content
-        
 
+    return app
 
-def get_host_name ():   
-    hostname=socket.gethostname()
-    return hostname
+def get_host_name():
+    return socket.gethostname()
 
-def get_host_ip ():    
-    IPAddr=socket.gethostbyname(hostname)
-    return IPAddr
-
+def get_host_ip():
+    host_name = socket.gethostname()
+    return socket.gethostbyname(host_name)
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
+    app = get_app()
     app.run(debug=True, host='0.0.0.0', port=port)
