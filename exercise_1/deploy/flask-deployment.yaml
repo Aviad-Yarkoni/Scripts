@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-app
+  labels:
+    app: Flask
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: Flask
+  template:
+    metadata:
+      labels:
+        app: Flask
+    spec:
+        containers:
+        - name: myflask
+          image: aviadyarkoni/exercise:myflask
+          ports:
+            - containerPort: 5000
+
+
+
+
