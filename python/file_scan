@@ -91,8 +91,3 @@ def write_dict_to_file (list_of_dict,file_result):
 
 
 
-
-find_outlier_files ('/home/osboxes/devsecops')
-
-
-

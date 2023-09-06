@@ -1,15 +1,20 @@
 
 from fastapi import FastAPI
+import labary_books 
+
+
+
 
 app = FastAPI()
 
+
 @app.get("/")
-async def root():
+def root():
     return {"message": "Hello book"}
 
 
 @app.get("/book/{book_name}")
-async def root(book_name):
+def get_book_name (book_name):
     return {"book":book_name }
 
 
