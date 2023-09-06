@@ -1,0 +1,32 @@
+
+{
+    "name":"Python:FastAPI",
+    "module": "uvicorn",
+    "type": "python",
+    "python": "${env:apiproject}/bin/python",
+    "request": "launch",
+    "args": [
+        "apiproject.main:app",
+        "--reload",
+        "--port",
+        "8000"
+    ]
+}
+
+
+// {
+//     // Use IntelliSense to learn about possible attributes.
+//     // Hover to view descriptions of existing attributes.
+//     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+//     "version": "0.2.0",
+//     "configurations": [
+//         {
+//             "name": "Python: Current File",
+//             "type": "python",
+//             "request": "launch",
+//             "program": "${file}",
+//             "console": "integratedTerminal",
+//             "justMyCode": true
+//         }
+//     ]
+// }

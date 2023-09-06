@@ -23,6 +23,7 @@ This is your server answering from pod:
 
 - Make sure your code is saved in github
 
+#Answer : view.py file
 
 ## Dockerize your server application
 
@@ -33,12 +34,17 @@ This is your server answering from pod:
 - Upload your images to dockerhub  
 (you need a dockerhub account for that)
 
+##Answer : aviadyarkoni/exercise:myflask
+
 ## Deploy your app to your local minikube kubernetes cluster
 
 - Create the necessary yaml files
 - Create a **deploy** directory in your project to store these files
 - Deployment files should be part of your github project
 - Deploy your code using **kubectl** commands
+
+## kubectl apply -f  flask-deployment.yaml 
+
 - Make sure deployment works even if image is locally deleted, so the image is downloaded from the registry
 
 
