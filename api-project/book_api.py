@@ -3,38 +3,33 @@ from fastapi import FastAPI
 import json
 
 
-# app = FastAPI()
-# def main_book_api ():
-#     labrary_books_file = "~/scripts/api-project/labrary_books"
-#     labrary_books = load_json_file("a")
+app = FastAPI()
 
-
-def read_json_file():
-    json_file = "/home/osboxes/scripts/api-project/labrary_books.json"
-    with open(json_file, "r") as file:
-        data = json.load(file)  
-    return data
-
-
-def read_json_file2():
-    json_file = "/home/osboxes/scripts/api-project/labrary_books.json"
-    file = open(json_file)
-    data = json.load(file)  
-    return data
-  
-# @app.get("/")
-# def root():
-#     return {"message": "Hello book"}
-
-
-# @app.get("/book/{book_name}")
-# def get_book_name (book_name):
-#     return {"book":book_name }
-
-
-a = read_json_file2()
-print (a)
 json_file = "/home/osboxes/scripts/api-project/labrary_books.json"
+file = open(json_file)
+book_list = json.load(file)  
+
+ 
+@app.get("/book")
+def search_instructions():
+    instructions = ['hello',
+                    'You can search by book title - /book/<bookname>',
+                    'You can see the entire list of books - /book/list']
+    return instructions
+
+
+@app.get("/book/{book_name}")
+def get_book_name (book_name):
+    book_founds = []
+    for current_book in book_list:
+        if current_book["book"] == book_name:
+            book_founds.append(current_book)
+        if book_name == 'list':
+            book_founds.append(current_book)
+    if len(book_founds)== 0:
+        book_founds.append('No books found')
+    return book_founds
+
 
 
 
