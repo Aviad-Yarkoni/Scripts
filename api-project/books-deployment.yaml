@@ -1,0 +1,19 @@
+piVersion: apps/v1
+kind: Deployment
+metadata:
+  name: Books-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: Books-api
+  template:
+    metadata:
+      labels:
+        app: Books-api
+    spec:
+      containers:
+      - name: books-api-container
+        image: aviadyarkoni/bookapi:latest
+        ports:
+        - containerPort: 8080
