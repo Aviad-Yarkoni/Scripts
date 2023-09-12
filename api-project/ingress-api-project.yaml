@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-api-project
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: authors-cluster-service
+            port:
+              number: 8080
+      - path: /author
+        pathType: Prefix
+        backend:
+          service:
+            name: authors-cluster-service
+            port:
+              number: 8080
+      - path: /book
+        pathType: Prefix
+        backend:
+          service:
+            name: books-cluster-service
+            port:
+              number: 8080

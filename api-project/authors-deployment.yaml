@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: books-api
+  name: authors-api
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: Books-api
+      app: authors-api
   template:
     metadata:
       labels:
-        app: Books-api
+        app: authors-api
     spec:
       containers:
-      - name: books-api-container
-        image: aviadyarkoni/bookapi:latest
+      - name: authors-api-container
+        image: aviadyarkoni/authorapi:latest
         ports:
         - containerPort: 8080
