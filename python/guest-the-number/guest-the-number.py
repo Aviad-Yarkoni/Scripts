@@ -7,15 +7,15 @@ def guess (high_numbr):
         guess = int(input(f'insert your guess number between 1 - {high_numbr}:'))
         result = check_number(guess,random_number)
         if result ==1:
-            print ('too low , guest again')
+            print ('too low , guess again')
             guess = int(input(f'insert your guess number between 1 - {high_numbr}:'))
             result = check_number(guess,random_number)
         if result ==2:
-            print ('too high, guest again')
+            print ('too high, guess again')
             guess = int(input(f'insert your guess number between 1 - {high_numbr}:'))
             result = check_number(guess,random_number)
 
-    print (f'congrats,you have geasted the number {random_number} correctly')
+    print (f'congrats,you have geassed the number {random_number} correctly')
 
 def check_number (guess,corect_number):
     if guess == corect_number:
