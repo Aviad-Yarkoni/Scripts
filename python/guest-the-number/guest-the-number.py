@@ -21,3 +21,7 @@ def check_number (guess,corect_number):
     if guess > corect_number:
         return 2
 
+
+
+higher_numbr= input ('insert number ')
+guess (higher_numbr)
