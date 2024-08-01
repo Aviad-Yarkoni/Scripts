@@ -4,10 +4,8 @@ FROM python:3.9.19-alpine3.20
 #set the working directory insite the container
 WORKDIR /app
 
-#copy the current directory contents into the contener at /app
-COPY ./guess-the-number.py ./app/
-
-
+#copy from the current directory contents into the contener at /app
+COPY ./guess-the-number.py ./app
 
 # Make port 80 available to the world outside this container
 EXPOSE 80
